@@ -23,15 +23,10 @@ Using Signed Credentials
 .. image:: https://cloud.githubusercontent.com/assets/264674/7033107/72b75938-dd80-11e4-9a9f-54fb10820976.png
     :alt: Enabled APIs
 
-3. Go to "Credentials" and hit "Create new Client ID".
+3. Go to "Credentials" and choose "New Credentials > Service Account Key".
 
-.. image:: https://cloud.githubusercontent.com/assets/264674/7033101/5d335e4a-dd80-11e4-96c0-fce81919ec2d.png
+.. image:: https://cloud.githubusercontent.com/assets/1297699/12098271/1616f908-b319-11e5-92d8-767e8e5ec757.png
     :alt: Google Developers Console
-
-4. Select "Service account". Hitting "Create Client ID" will generate a new Public/Private key pair.
-
-.. image:: https://cloud.githubusercontent.com/assets/264674/7032990/6dfaceb2-dd7f-11e4-8071-1490a5b19c8e.png
-    :alt: Create Client ID in Developers Console
 
 You will automatically download a JSON file with this data.
 
@@ -65,6 +60,21 @@ Depending on your system setup you may need to install PyOpenSSL:
     pip install PyOpenSSL
 
 6. Now you can read this file, and use the data when constructing your credentials:
+
+::
+
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
+
+    scope = ['https://spreadsheets.google.com/feeds']
+
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('gspread-april-2cd … ba4.json', scope)
+
+    gc = gspread.authorize(credentials)
+
+    wks = gc.open("Where is the money Lebowski?").sheet1
+
+If using oauth2client < 2.0.0
 
 ::
 
