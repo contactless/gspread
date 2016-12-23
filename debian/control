@@ -1,0 +1,11 @@
+Source: python-gspread
+Maintainer: Evgeny Boger <boger@contactless.ru>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools, python2.7-dev, debhelper (>= 7)
+Standards-Version: 3.9.1
+
+Package: python-gspread
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}, python-oauth2client
+Description: Google Spreadsheets Python API
